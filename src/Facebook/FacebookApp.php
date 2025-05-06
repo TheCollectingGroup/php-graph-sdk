@@ -107,4 +107,28 @@ class FacebookApp implements \Serializable
 
         $this->__construct($id, $secret);
     }
+
+    /**
+     * Serializes the object to an array.
+     * 
+     * @return array
+     */
+    public function __serialize()
+    {
+        return [
+            'id' => $this->id,
+            'secret' => $this->secret,
+        ];
+    }
+
+    /**
+     * Restores the object state from an array.
+     * 
+     * @param array $data
+     */
+    public function __unserialize($data)
+    {
+        $this->id = $data['id'];
+        $this->secret = $data['secret'];
+    }
 }
